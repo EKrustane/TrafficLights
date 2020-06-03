@@ -103,8 +103,6 @@ namespace TrafficLights
             timerBlink.Stop();
         }
 
-
-
         private void InitializeTrafficLights()
         {
             this.BackColor = Color.Black;
