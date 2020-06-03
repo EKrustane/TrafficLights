@@ -13,7 +13,7 @@ namespace TrafficLights
     public partial class TrafficLights : Form
     {
         private Timer timerSwitch;
-        int sec = 1000;
+        private Timer timerBlink;
         int tickCount = 0;
 
         public TrafficLights()
@@ -25,15 +25,22 @@ namespace TrafficLights
         private void InitializeTimerSwitch()
         {
             timerSwitch = new Timer();
-            timerSwitch.Interval = sec;
+            timerSwitch.Interval = 1000;
             timerSwitch.Tick += new EventHandler(TimerSwitch_Tick);
             timerSwitch.Start();
 
         }
+        private void InitializeTimerBlink()
+        {
+            timerBlink = new Timer();
+            timerBlink.Interval = 500;
+            timerBlink.Tick += new EventHandler(TimerBlink_Tick);
+            timerBlink.Start();
+        }
 
         private void TimerSwitch_Tick(object sender, EventArgs e)
         {
-            if(tickCount<=3)
+            if (tickCount <= 3)
             {
 
                 RedLight.BackColor = Color.Red;
@@ -42,21 +49,25 @@ namespace TrafficLights
                 tickCount++;
 
             }
-            else if (tickCount>3 && tickCount<=6)
+            else if (tickCount > 3 && tickCount <= 6)
             {
-               
+
                 RedLight.BackColor = Color.Gray;
                 GreenLight.BackColor = Color.Gray;
                 YellowLight.BackColor = Color.Yellow;
                 tickCount++;
 
             }
-            else if (tickCount > 6 && tickCount<=9)
+            else if (tickCount > 6 && tickCount <= 9)
             {
 
                 RedLight.BackColor = Color.Gray;
                 GreenLight.BackColor = Color.Green;
                 YellowLight.BackColor = Color.Gray;
+                if (tickCount > 7 && tickCount<10)
+                {
+                    InitializeTimerBlink();
+                }
                 tickCount++;
             }
             else if (tickCount > 9 && tickCount <= 12)
@@ -79,7 +90,20 @@ namespace TrafficLights
             }
 
         }
-       
+        private void TimerBlink_Tick(object sender, EventArgs e)
+        {
+            if(GreenLight.BackColor == Color.Gray)
+            {
+                GreenLight.BackColor = Color.Green;
+            }
+            else
+            {
+                GreenLight.BackColor = Color.Gray;
+            }
+            timerBlink.Stop();
+        }
+
+
 
         private void InitializeTrafficLights()
         {
