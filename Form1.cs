@@ -12,10 +12,23 @@ namespace TrafficLights
 {
     public partial class TrafficLights : Form
     {
+        private Timer timerSwitch;
+
         public TrafficLights()
         {
             InitializeComponent();
             InitializeTrafficLights();
+        }
+        private void InitializeTimerSwitch()
+        {
+            timerSwitch = new Timer();
+            timerSwitch.Interval = 1000;
+            timerSwitch.Tick += new EventHandler(TimerSwitch_Tick);
+        }
+
+        private void TimerSwitch_Tick(object sender, EventArgs e)
+        {
+
         }
 
         private void InitializeTrafficLights()
