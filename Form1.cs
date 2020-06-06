@@ -15,6 +15,7 @@ namespace TrafficLights
         private Timer timerSwitch;
         private Timer timerBlink;
         int tickCount = 0;
+        int seconds = 0;
 
         public TrafficLights()
         {
@@ -81,6 +82,33 @@ namespace TrafficLights
 
             }
 
+        }
+        private void SwitchLights()
+        {
+            switch (seconds) // if else vietā(īsāk)
+            {
+                case 0:
+                    RedLight.BackColor = Color.Red;
+                    break;
+                case 3:
+                    YellowLight.BackColor = Color.Yellow;
+                    RedLight.BackColor = Color.Gray;
+                    break;
+                case 5:
+                    YellowLight.BackColor = Color.Gray;
+                    GreenLight.BackColor = Color.Green;
+                    break;
+                case 8:
+                    YellowLight.BackColor = Color.Yellow;
+                    GreenLight.BackColor = Color.Gray;
+                    break;
+                case 10:
+                    YellowLight.BackColor = Color.Gray;
+                    RedLight.BackColor = Color.Red;
+                    seconds = -1;
+                    break;
+            }
+            seconds++;
         }
         private void TimerBlink_Tick(object sender, EventArgs e)
         {
