@@ -50,15 +50,13 @@ namespace TrafficLights
             else if (tickCount > 3 && tickCount <= 6)
             {
 
-                //RedLight.BackColor = Color.Gray;
+                RedLight.BackColor = Color.Gray;
                 YellowLight.BackColor = Color.Yellow;
                 tickCount++;
 
             }
             else if (tickCount > 6 && tickCount <= 9)
             {
-
-                RedLight.BackColor = Color.Gray;
                 GreenLight.BackColor = Color.Green;
                 YellowLight.BackColor = Color.Gray;
                 if (tickCount > 7 && tickCount<10)
@@ -69,8 +67,6 @@ namespace TrafficLights
             }
             else if (tickCount > 9 && tickCount <= 12)
             {
-
-                RedLight.BackColor = Color.Gray;
                 GreenLight.BackColor = Color.Gray;
                 YellowLight.BackColor = Color.Yellow;
                 tickCount++;
@@ -80,7 +76,6 @@ namespace TrafficLights
             {
 
                 RedLight.BackColor = Color.Red;
-                GreenLight.BackColor = Color.Gray;
                 YellowLight.BackColor = Color.Gray;
                 tickCount = 0;
 
