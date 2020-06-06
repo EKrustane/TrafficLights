@@ -44,16 +44,13 @@ namespace TrafficLights
             {
 
                 RedLight.BackColor = Color.Red;
-                GreenLight.BackColor = Color.Gray;
-                YellowLight.BackColor = Color.Gray;
                 tickCount++;
 
             }
             else if (tickCount > 3 && tickCount <= 6)
             {
 
-                RedLight.BackColor = Color.Gray;
-                GreenLight.BackColor = Color.Gray;
+                //RedLight.BackColor = Color.Gray;
                 YellowLight.BackColor = Color.Yellow;
                 tickCount++;
 
