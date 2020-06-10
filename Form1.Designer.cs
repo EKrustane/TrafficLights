@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrafficLights));
             this.RedLight = new System.Windows.Forms.PictureBox();
             this.YellowLight = new System.Windows.Forms.PictureBox();
             this.GreenLight = new System.Windows.Forms.PictureBox();
@@ -68,8 +69,9 @@
             this.Controls.Add(this.GreenLight);
             this.Controls.Add(this.YellowLight);
             this.Controls.Add(this.RedLight);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TrafficLights";
-            this.Text = "Form1";
+            this.Text = "Traffic Lights";
             ((System.ComponentModel.ISupportInitialize)(this.RedLight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.YellowLight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GreenLight)).EndInit();

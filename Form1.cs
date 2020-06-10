@@ -17,14 +17,21 @@ namespace TrafficLights
         private int tickCount = 0;
         private Label labelTime = null;
         private int hou = 0, min = 0, sec = 0;
-
-        public TrafficLights()
+    public TrafficLights()
         {
             InitializeComponent();
+            InitializeApp();
             InitializeTrafficLights();
             InitializeTimerSwitch();
             InitializeLabelTime();
         }
+        private void InitializeApp()
+        {
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
+        }
+        
         private void InitializeLabelTime()
         {
             labelTime = new Label();
