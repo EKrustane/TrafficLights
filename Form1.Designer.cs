@@ -38,7 +38,7 @@
             // 
             // RedLight
             // 
-            this.RedLight.Location = new System.Drawing.Point(54, 7);
+            this.RedLight.Location = new System.Drawing.Point(54, 58);
             this.RedLight.Name = "RedLight";
             this.RedLight.Size = new System.Drawing.Size(150, 150);
             this.RedLight.TabIndex = 0;
@@ -46,7 +46,7 @@
             // 
             // YellowLight
             // 
-            this.YellowLight.Location = new System.Drawing.Point(54, 163);
+            this.YellowLight.Location = new System.Drawing.Point(54, 214);
             this.YellowLight.Name = "YellowLight";
             this.YellowLight.Size = new System.Drawing.Size(150, 150);
             this.YellowLight.TabIndex = 1;
@@ -54,21 +54,21 @@
             // 
             // GreenLight
             // 
-            this.GreenLight.Location = new System.Drawing.Point(54, 319);
+            this.GreenLight.Location = new System.Drawing.Point(54, 370);
             this.GreenLight.Name = "GreenLight";
             this.GreenLight.Size = new System.Drawing.Size(150, 150);
             this.GreenLight.TabIndex = 2;
             this.GreenLight.TabStop = false;
             // 
-            // Form1
+            // TrafficLights
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(259, 477);
+            this.ClientSize = new System.Drawing.Size(259, 532);
             this.Controls.Add(this.GreenLight);
             this.Controls.Add(this.YellowLight);
             this.Controls.Add(this.RedLight);
-            this.Name = "Form1";
+            this.Name = "TrafficLights";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.RedLight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.YellowLight)).EndInit();

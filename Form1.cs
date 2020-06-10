@@ -14,14 +14,28 @@ namespace TrafficLights
     {
         private Timer timerSwitch;
         private Timer timerBlink;
-        int tickCount = 0;
-        int seconds = 0;
+        private int tickCount = 0;
+        private Label labelTime = null;
+        private int hou = 0, min = 0, sec = 0;
 
         public TrafficLights()
         {
             InitializeComponent();
             InitializeTrafficLights();
             InitializeTimerSwitch();
+            InitializeLabelTime();
+        }
+        private void InitializeLabelTime()
+        {
+            labelTime = new Label();
+            labelTime.Font = new Font("Consolas", 18, FontStyle.Bold);
+            labelTime.Width = 150;
+            labelTime.Height = 50;
+            labelTime.Top = 10;
+            labelTime.Left = 30;
+            labelTime.ForeColor = Color.White;
+            labelTime.Text = "00:00:00";
+            this.Controls.Add(labelTime);
         }
         private void InitializeTimerSwitch()
         {
@@ -41,74 +55,45 @@ namespace TrafficLights
 
         private void TimerSwitch_Tick(object sender, EventArgs e)
         {
-            if (tickCount <= 3)
-            {
+            UpdateClock();
+            SwitchLights();
+        }
 
-                RedLight.BackColor = Color.Red;
-                tickCount++;
-
-            }
-            else if (tickCount > 3 && tickCount <= 6)
-            {
-
-                RedLight.BackColor = Color.Gray;
-                YellowLight.BackColor = Color.Yellow;
-                tickCount++;
-
-            }
-            else if (tickCount > 6 && tickCount <= 9)
-            {
-                GreenLight.BackColor = Color.Green;
-                YellowLight.BackColor = Color.Gray;
-                if (tickCount > 7 && tickCount<10)
-                {
-                    InitializeTimerBlink();
-                }
-                tickCount++;
-            }
-            else if (tickCount > 9 && tickCount <= 12)
-            {
-                GreenLight.BackColor = Color.Gray;
-                YellowLight.BackColor = Color.Yellow;
-                tickCount++;
-
-            }
-            else if (tickCount > 12)
-            {
-
-                RedLight.BackColor = Color.Red;
-                YellowLight.BackColor = Color.Gray;
-                tickCount = 0;
-
-            }
+        private void UpdateClock()
+        {
 
         }
         private void SwitchLights()
         {
-            switch (seconds) // if else vietā(īsāk)
+            switch (tickCount)
             {
                 case 0:
                     RedLight.BackColor = Color.Red;
                     break;
                 case 3:
                     YellowLight.BackColor = Color.Yellow;
-                    RedLight.BackColor = Color.Gray;
+                    //RedLight.BackColor = Color.Gray;
                     break;
                 case 5:
+                    RedLight.BackColor = Color.Gray;
                     YellowLight.BackColor = Color.Gray;
                     GreenLight.BackColor = Color.Green;
                     break;
+                case 6:
+                    InitializeTimerBlink();
+                    break;
                 case 8:
+                    timerBlink.Stop();
                     YellowLight.BackColor = Color.Yellow;
                     GreenLight.BackColor = Color.Gray;
                     break;
                 case 10:
                     YellowLight.BackColor = Color.Gray;
                     RedLight.BackColor = Color.Red;
-                    seconds = -1;
+                    tickCount = -1;
                     break;
             }
-            seconds++;
+            tickCount++;
         }
         private void TimerBlink_Tick(object sender, EventArgs e)
         {
@@ -120,7 +105,6 @@ namespace TrafficLights
             {
                 GreenLight.BackColor = Color.Gray;
             }
-            timerBlink.Stop();
         }
 
         private void InitializeTrafficLights()
