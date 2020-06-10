@@ -56,12 +56,38 @@ namespace TrafficLights
         private void TimerSwitch_Tick(object sender, EventArgs e)
         {
             UpdateClock();
+            UpdateLabelTime();
             SwitchLights();
         }
 
+        private void ResetClock()
+        {
+            sec = 0;
+            min = 0;
+            hou = 0;
+        }
         private void UpdateClock()
         {
+            sec++;
+            if(sec==60)
+            {
+                min++;
+                sec = 0;
+            }
+            if (min == 60)
+            {
+                hou++;
+                min = 0;
+            }
+            if(hou==24)
+            {
+                ResetClock();
+            }
+        }
 
+        private void UpdateLabelTime()
+        {
+            labelTime.Text = $"{hou:00}:{min:00}:{sec:00}";
         }
         private void SwitchLights()
         {
